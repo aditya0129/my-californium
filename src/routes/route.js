@@ -73,5 +73,68 @@ router.get("/shoes", function(req, res){
     //req.query.brand
     res.send("dummy shoes response")
 })
+// Assignment
+router.get("/test-movies", function(req, res){
+    const movies = ["3Idiots","12thMan","Tenet","Avtar","Bahubali"]
+    console.log("movie is printing here");
+    res.send("My favourite movies are : "+ movies)
+})
+
+router.get("/movies/:indexNumber", function(req, res){
+    const movies = ["3Idiots","12thMan","Tenet","Avtar","Bahubali"]
+    if(req.params.indexNumber > 4){
+        res.send("The index that you given is not available")
+    }
+    res.send(movies[req.params.indexNumber])
+})
+
+router.get("/film-details", function(req, res){
+    const movieDetails = [
+        {
+            "id" : 1,
+            "name" : "Dasvi"
+        },
+        {
+            "id" : 2,
+            "name" : "KGF-Chapter2"
+        },
+        {
+            "id" : 1,
+            "name" : "Pushpa"
+        },
+        {
+            "id" : 1,
+            "name" : "12thMan"
+        }
+    ]
+    res.send(movieDetails)
+})
+
+router.get("/film/:filmId", function(req, res){
+    const movieDetails = [
+        {
+            "id" : 1,
+            "name" : "Dasvi"
+        },
+        {
+            "id" : 2,
+            "name" : "KGF-Chapter2"
+        },
+        {
+            "id" : 3,
+            "name" : "Pushpa"
+        },
+        {
+            "id" : 4,
+            "name" : "12thMan"
+        }
+    ]
+    if(req.params.filmId > 4){
+        res.send("No movie exists with this id ")
+    }
+    res.send(movieDetails[req.params.filmId-1])
+})
+
+module.exports = router;
 
 module.exports = router;
