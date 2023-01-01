@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController= require("../controllers/userController")
-const myUserController = require("../controllers/user2Controller")
+const myUserController = require("../controllers/userController")
 const myUserMid = require("../middleware/auth")
 
 router.get("/test-me", function (req, res) {
@@ -19,11 +19,11 @@ router.get("/test-me", function (req, res) {
 //router.delete('/users/:userId', userController.)
 
 
-router.post("/myusers", myUserController.createMyUser )
-router.post("/mylogin", myUserController.myloginUser)
-router.get("/myusers/:userId", myUserMid.authentication,myUserMid.authorise, myUserController.getMyUsersData)
-router.put("/myusersupdate/:userId", myUserMid.authentication,myUserMid.authorise, myUserController.updateMyUser)
-router.delete("/myusers/:userId", myUserMid.authentication,myUserMid.authorise,myUserController.deleteMyUser) 
+router.post("/myusers", myUserController.createUser )
+router.post("/mylogin", myUserController.loginUser)
+router.get("/myusers/:userId", myUserMid.authenticate,myUserMid.authorise, myUserController.getUserData)
+router.put("/myusersupdate/:userId", myUserMid.authenticate,myUserMid.authorise, myUserController.updateUser)
+router.delete("/myusers/:userId", myUserMid.authenticate,myUserMid.authorise,myUserController.deleteUser) 
 
 
 module.exports = router;

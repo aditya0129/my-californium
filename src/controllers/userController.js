@@ -14,7 +14,7 @@ const createUser = async function (req, res) {
     let savedData = await userModel.create(data);
     res.status(201).send({ msg: savedData });
   } catch (error) {
-    res.status(500).send({ error: error.message })
+    res.status(500).send({ error: error.message})
   }
 };
 
@@ -84,7 +84,7 @@ const updateUser = async function (req, res) {
     if (!user) { return res.status(404).send("No such user exists"); }
 
     let userData = req.body;
-    let updatedUser = await userModel.findOneAndUpdate({ _id: userId }, userData);
+    let updatedUser = await userModel.findOneAndUpdate({ _id: userId }, userData,{new:true});
     res.status(200).send({ status: updatedUser, data: updatedUser });
 
   } catch (error) {
